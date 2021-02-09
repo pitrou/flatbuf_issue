@@ -19,8 +19,8 @@ int main(int argc, char** argv) {
 
   flatbuffers::Verifier verifier(reinterpret_cast<const uint8_t*>(data.data()),
                                  data.size(),
-                                 /*max_depth=*/128,
-                                 /*max_tables=*/100000000);
+                                 /*max_depth=*/32,
+                                 /*max_tables=*/1000 * 1000 * 1000);
   if (!fb::VerifyFooterBuffer(verifier)) {
     throw std::runtime_error("Footer verification failed");
   }
